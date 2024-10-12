@@ -16,3 +16,4 @@ n = gets.chomp.to_i
 res = count_lessThen3(n)
 puts "Количество цифр числа #{n}, меньших 3: #{res}"
 	
+
