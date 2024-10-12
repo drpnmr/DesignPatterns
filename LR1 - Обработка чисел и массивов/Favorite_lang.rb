@@ -35,3 +35,6 @@ begin
 rescue StandardError => e
   puts "Ошибка при выполнении команд: #{e.message}"
 end
+
+
+
