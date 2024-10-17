@@ -60,12 +60,9 @@ class Student
     puts "Телефон: #{@phone}" if @phone
     puts "Телеграм: #{@telegram}" if @telegram
     puts "Почта: #{@email}" if @email
-    puts "Гит: #{@git}" if @github
+    puts "Гит: #{@git}" if @git
     puts ""
   end
 end
-
-student = Student.new("Ponomar", "Darya", "Sergeevna")
-puts student.show_info
 
 
