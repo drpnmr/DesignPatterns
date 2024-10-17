@@ -4,7 +4,7 @@ class Student
       @surname = surname
       @name = name
       @patronymic = patronymic
-	  @id = id
+	    @id = id
       @phone = phone
       @telegram = telegram
       @email = email
@@ -52,10 +52,20 @@ class Student
     @git = value
   end
   
+  def show_info()
+    puts "Id студента: #{@id}" if @id
+    puts "Фамилия: #{@surname}"
+    puts "Имя: #{@name}"
+    puts "Отчество: #{@patronymic}"
+    puts "Телефон: #{@phone}" if @phone
+    puts "Телеграм: #{@telegram}" if @telegram
+    puts "Почта: #{@email}" if @email
+    puts "Гит: #{@git}" if @github
+    puts ""
+  end
 end
 
 student = Student.new("Ponomar", "Darya", "Sergeevna")
-puts student.get_name
+puts student.show_info
 
-student.set_name("Daria")
-puts student.get_name
+
