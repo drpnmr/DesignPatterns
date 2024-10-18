@@ -1,5 +1,4 @@
 class Student
-  
   attr_accessor :surname, :name, :patronymic, :id, :phone, :telegram, :email, :git
   
   def initialize(args = {})
@@ -7,10 +6,19 @@ class Student
     @name = args[:name] || raise(ArgumentError, "Имя обязательно")
     @patronymic = args[:patronymic] || raise(ArgumentError, "Отчество обязательно")
     @id = args[:id]
-    @phone = args[:phone]
+    self.phone = args[:phone] 
     @telegram = args[:telegram]
     @email = args[:email]
     @git = args[:git]
+  end
+
+  def self.phone_regular(phone)
+    phone =~ /^\+7\d{10}$/
+  end
+
+  def phone=(phone)
+    raise ArgumentError, "Недопустимый номер телефона" unless self.class.phone_regular(phone)
+    @phone = phone
   end
 
   def show_info()
