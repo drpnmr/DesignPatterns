@@ -1,19 +1,18 @@
 class Student
-
+  
   attr_accessor :surname, :name, :patronymic, :id, :phone, :telegram, :email, :git
   
-  def initialize(surname, name, patronymic, id = nil, phone = nil, telegram = nil, email = nil, git = nil)
-    @surname = surname
-    @name = name
-    @patronymic = patronymic
-	  @id = id
-    @phone = phone
-    @telegram = telegram
-    @email = email
-    @git = git
+  def initialize(args = {})
+    @surname = args[:surname] || raise(ArgumentError, "Фамилия обязательна")
+    @name = args[:name] || raise(ArgumentError, "Имя обязательно")
+    @patronymic = args[:patronymic] || raise(ArgumentError, "Отчество обязательно")
+    @id = args[:id]
+    @phone = args[:phone]
+    @telegram = args[:telegram]
+    @email = args[:email]
+    @git = args[:git]
   end
 
-  
   def show_info()
     puts "Id студента: #{@id || 'не указано'}"
     puts "Фамилия: #{@surname}"
@@ -25,7 +24,4 @@ class Student
     puts "Гит: #{@git || 'не указано'}"
     puts ""
   end
-
 end
-
-
