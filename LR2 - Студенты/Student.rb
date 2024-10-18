@@ -6,17 +6,21 @@ class Student
     @name = args[:name] || raise(ArgumentError, "Имя обязательно")
     @patronymic = args[:patronymic] || raise(ArgumentError, "Отчество обязательно")
     @id = args[:id]
-    self.phone = args[:phone] 
-    self.telegram = args[:telegram]
-    self.email = args[:email]
+    self.set_contacts(args)
     self.git = args[:git]
+  end
+
+  def set_contacts(contacts)
+    self.phone = contacts[:phone]
+    self.telegram = contacts[:telegram]
+    self.email = contacts[:email]
   end
 
   def self.phone_regular(phone)
     phone =~ /^\+7\d{10}$/
   end
 
-  def phone=(phone)
+  private def phone=(phone)
     if phone.nil? || phone.empty?
       @phone = nil
     else
@@ -29,7 +33,7 @@ class Student
     telegram =~ /^[a-zA-Z0-9_-]{4,20}$/
   end
 
-  def telegram=(telegram)
+  private def telegram=(telegram)
     if telegram.nil? || telegram.empty?
       @telegram = nil
     else
@@ -42,7 +46,7 @@ class Student
     email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   end
 
-  def email=(email)
+  private def email=(email)
     if email.nil? || email.empty?
       @email = nil
     else
@@ -92,4 +96,6 @@ class Student
     puts "Гит: #{@git || 'не указано'}"
     puts ""
   end
+
+
 end
