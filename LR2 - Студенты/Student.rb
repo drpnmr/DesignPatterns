@@ -17,17 +17,25 @@ class Student
   end
 
   def phone=(phone)
-    raise ArgumentError, "Недопустимый номер телефона" unless self.class.phone_regular(phone)
-    @phone = phone
+    if phone.nil? || phone.empty?
+      @phone = nil
+    else
+      raise ArgumentError, "Недопустимый номер телефона у студента с id: #{self.id}" unless self.class.phone_regular(phone)
+      @phone = phone
+    end
   end
 
   def self.telegram_regular(telegram)
-    telegram =~ /^[a-zA-Z0-9_-]{1,20}$/
+    telegram =~ /^[a-zA-Z0-9_-]{4,20}$/
   end
 
   def telegram=(telegram)
-    raise ArgumentError, "Недопустимый телеграм" unless self.class.telegram_regular(telegram)
-    @telegram = telegram
+    if telegram.nil? || telegram.empty?
+      @telegram = nil
+    else
+      raise ArgumentError, "Недопустимый телеграм у студента с id: #{self.id}" unless self.class.telegram_regular(telegram)
+      @telegram = telegram
+    end
   end
 
   def self.email_regular(email)
@@ -35,17 +43,42 @@ class Student
   end
 
   def email=(email)
-    raise ArgumentError, "Недопустимый адрес почты" unless self.class.email_regular(email)
-    @email = email
+    if email.nil? || email.empty?
+      @email = nil
+    else
+      raise ArgumentError, "Недопустимый адрес почты у студента с id: #{self.id}" unless self.class.email_regular(email)
+      @email = email
+    end
   end
 
   def self.git_regular(git)
-    git =~ /^[a-zA-Z0-9_-]{1,20}$/
+    git =~ /^[a-zA-Z0-9_-]{4,20}$/
   end
 
   def git=(git)
-    raise ArgumentError, "Недопустимый гит" unless self.class.git_regular(git)
-    @git = git
+    if git.nil? || git.empty?
+      @git = nil
+    else
+      raise ArgumentError, "Недопустимый гит у студента с id: #{self.id}" unless self.class.git_regular(git)
+      @git = git
+    end
+  end
+
+  def check_git?
+    @git.nil? 
+  end
+
+  def check_contact?
+    !@phone.nil? || !@telegram.nil? || !@email.nil?
+  end
+
+  def validate
+    if check_git?
+      raise ArgumentError, "У студента с id '#{self.id}' отсутствует гит"
+    end
+    unless check_contact?
+      raise ArgumentError, "У студента с id '#{self.id}' нет ни одного контакта"
+    end
   end
 
   def show_info()
