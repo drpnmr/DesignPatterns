@@ -13,10 +13,6 @@ class Person
       self.email = contacts[:email]
     end
   
-    def self.is_correct_name?(name)
-      name =~ /^[А-Яа-яЁё\s]+$/
-    end
-  
     def self.is_correct_phone?(phone)
       phone =~ /^\+7\d{10}$/
     end
