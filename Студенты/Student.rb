@@ -1,3 +1,4 @@
+require './Short_student.rb'
 class Student
   attr_accessor :id
   attr_reader :phone, :name, :surname, :patronymic, :telegram, :email, :git
@@ -121,23 +122,20 @@ class Student
  def get_contacts
   if (self.have_contact?)
       if (telegram) then
-          return "telegram: #{self.telegram}"
+          return "телеграм: #{self.telegram}"
       end
       if (email) then
-          return "email: #{self.email}"
+          return "почта: #{self.email}"
       end
       if (phone) then
-          return "phone: #{self.phone}"
+          return "телефон: #{self.phone}"
       end
   else
       "контакты отсутствуют"
   end
  end
 
- def get_info
-  "#{get_initials}, git: #{self.get_git}, #{get_contacts}"
- end
-
+ 
  def to_s()
   "  Фамилия: #{@surname}
   Имя: #{@name}
