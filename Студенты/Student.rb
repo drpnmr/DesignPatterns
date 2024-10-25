@@ -10,6 +10,10 @@ class Student < Person
     self.git = args[:git]
   end
 
+  def self.is_correct_name?(name)
+    name =~ /^[А-Яа-яЁё\s]+$/
+  end
+  
   def surname=(surname)
     raise ArgumentError, "Недопустимая фамилия у студента с id: #{self.id}" unless self.class.is_correct_name?(surname)
     @surname = surname
