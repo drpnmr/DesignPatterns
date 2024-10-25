@@ -88,27 +88,60 @@ class Student
    end
  end
 
- def check_git?
+ def have_git?
    @git.nil? 
  end
 
- def check_contact?
+ def have_contact?
    !@phone.nil? || !@telegram.nil? || !@email.nil?
  end
 
  def validate
-   if check_git?
+   if have_git?
      "У студента с id '#{self.id}' отсутствует гит"
    end
-   unless check_contact?
+   unless have_contact?
      "У студента с id '#{self.id}' нет ни одного контакта"
    end
  end
+ 
+ def get_initials
+  "#{self.surname} #{self.name[0]}.#{self.patronymic[0]}."
+ end
+
+ def get_git
+  if(!have_git?) then
+      self.git
+  else
+      "гит отсутствует"
+  end
+ end
+
+
+ def get_contacts
+  if (self.have_contact?)
+      if (telegram) then
+          return "telegram: #{self.telegram}"
+      end
+      if (email) then
+          return "email: #{self.email}"
+      end
+      if (phone) then
+          return "phone: #{self.phone}"
+      end
+  else
+      "контакты отсутствуют"
+  end
+ end
+
+ def get_info
+  "#{get_initials}, git: #{self.get_git}, #{get_contacts}"
+ end
 
  def to_s()
-  "  Фамилия: #{surname}
-  Имя: #{name}
-  Отчество: #{patronymic}
+  "  Фамилия: #{@surname}
+  Имя: #{@name}
+  Отчество: #{@patronymic}
   Id студента: #{@id ? @id : "не указано"}
   Телефон: #{@phone ? @phone : "не указано"}
   Телеграм: #{@telegram ? @telegram : "не указано"}
