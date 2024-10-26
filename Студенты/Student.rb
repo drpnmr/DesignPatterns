@@ -1,13 +1,13 @@
 require './Person.rb'
 class Student < Person
-  attr_reader :name, :surname, :patronymic, :git
+  attr_reader :name, :surname, :patronymic
 
   def initialize(args = {})
     super(args)
     self.surname = args[:surname] || raise(ArgumentError, "Фамилия обязательна")
     self.name = args[:name] || raise(ArgumentError, "Имя обязательно")
     self.patronymic = args[:patronymic] || raise(ArgumentError, "Отчество обязательно")
-    self.git = args[:git]
+
   end
 
   def self.is_correct_name?(name)

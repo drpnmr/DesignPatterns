@@ -1,10 +1,10 @@
 class Student_short < Person
-    attr_reader :full_name, :git, :contact
+    attr_reader :full_name, :contact
   
     def initialize(id, full_name, git, contact)
       super(id: id)
       self.full_name = full_name
-      self.git = git
+      super(git: git)
       self.contact = contact
     end
   

@@ -4,6 +4,7 @@ class Person
   
     def initialize(args = {})
       @id = args[:id]
+      @git = args[:git]
       set_contacts(args)
     end
   
