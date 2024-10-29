@@ -2,11 +2,11 @@ require './Person.rb'
 class Student < Person
   attr_reader :name, :surname, :patronymic
 
-  def initialize(args = {})
-    super(args)
-    self.surname = args[:surname] || raise(ArgumentError, "Фамилия обязательна")
-    self.name = args[:name] || raise(ArgumentError, "Имя обязательно")
-    self.patronymic = args[:patronymic] || raise(ArgumentError, "Отчество обязательно")
+  def initialize(id:nil,surname:,name:,patronymic:,phone:nil,telegram:nil,email:nil,git:nil)
+    super(id: id, git: git, phone: phone, telegram: telegram, email: email)
+    self.surname = surname
+    self.name = name 
+    self.patronymic = patronymic
 
   end
 
@@ -27,22 +27,6 @@ class Student < Person
   def patronymic=(patronymic)
     raise ArgumentError, "Недопустимое отчество у студента с id: #{self.id}" unless self.class.is_correct_name?(patronymic)
     @patronymic = patronymic
-  end
-
-  def have_git?
-    !@git.nil?
-  end
-
-  def have_contact?
-    !@phone.nil? || !@telegram.nil? || !@email.nil?
-  end
-
-  def validate
-    if !have_git?
-      "У студента с id '#{self.id}' отсутствует гит"
-    elsif !have_contact?
-      "У студента с id '#{self.id}' нет ни одного контакта"
-    end
   end
 
   def to_s()
