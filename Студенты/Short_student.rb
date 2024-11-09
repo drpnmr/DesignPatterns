@@ -11,7 +11,7 @@ class Student_short < Person
         id: student.id,
         full_name: student.full_name,
         git: student.git,
-        contact: student.get_contact
+        contact: student.contact
       )
     end
     
