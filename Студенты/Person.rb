@@ -70,12 +70,8 @@ class Person
   end
 
   def validate
-    if !have_git?
-      "У студента с id '#{self.id}' отсутствует гит"
-    elsif !have_contact?
-      "У студента с id '#{self.id}' нет ни одного контакта"
-    end
-  end
+    have_git? && have_contact?
+  end  
 
   private
 
