@@ -36,5 +36,12 @@ def indices_of_most_frequent_elements(array)
 
     array.each_with_index.select { |x, i| frequency[x] == max_frequency }.map { |pair| pair.last } 
 end
+
+#Метод 5. Построить массив из элементов, делящихся на свой номер и встречающихся в исходном массиве 1 раз.
+
+def elements_divisible_by_index_and_unique(array)
+    array.each_with_index.select {|x, i| x % (i + 1) == 0 && array.count(x) == 1 }.map { |pair| pair.first } 
+end
+  
   
   
