@@ -10,6 +10,15 @@ def reverse_between_min_max(array)
     array[0..start_index] + array[start_index+1..end_index - 1].reverse + array[end_index..-1]
 end
 
+#Метод 2. Найти два наибольших элемента массива
 
-
+def find_two_largest_elements(array)
+    return nil if array.empty? || array.uniq.size == 1
+    
+    largest = array.max 
+    second_largest = array.reject { |x| x == largest }.max
+    
+    return largest, second_largest 
+end
+  
   
