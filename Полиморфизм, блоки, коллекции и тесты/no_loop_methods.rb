@@ -27,7 +27,14 @@ def max_odd_element(array)
     odd_elements = array.select { |x| x.odd? }
     odd_elements.empty? ? nil : odd_elements.max
 end
-  
 
+#Метод 4. Для введенного списка построить список с номерами элемента, который повторяется наибольшее число раз.
+
+def indices_of_most_frequent_elements(array)
+    frequency = array.tally  
+    max_frequency = frequency.values.max 
+
+    array.each_with_index.select { |x, i| frequency[x] == max_frequency }.map { |pair| pair.last } 
+end
   
   
