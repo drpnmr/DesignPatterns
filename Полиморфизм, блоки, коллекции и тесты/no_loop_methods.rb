@@ -20,5 +20,14 @@ def find_two_largest_elements(array)
     
     return largest, second_largest 
 end
+
+#Метод 3. Найти максимальный нечетный элемент
+
+def max_odd_element(array)
+    odd_elements = array.select { |x| x.odd? }
+    odd_elements.empty? ? nil : odd_elements.max
+end
+  
+
   
   
