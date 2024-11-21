@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require './block_methods.rb'
+require './ArrayProcessor.rb'
 
 class TestArrayProcessor < Minitest::Test
 
