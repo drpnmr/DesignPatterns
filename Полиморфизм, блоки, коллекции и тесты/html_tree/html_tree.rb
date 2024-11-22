@@ -4,8 +4,34 @@ class HtmlTree
 
   attr_accessor :root
 
-  def initialize(root_tag)
-    @root = root_tag
+  TAG_REGEX = /<([a-zA-Z0-9]+)(.*?)>(.*?)<\/\1>/m
+
+  def initialize(html_content)
+    @root = parse_html(html_content)
+  end
+
+  def parse_html(html_content, parent = nil)
+    return nil if html_content.strip.empty?
+
+    matches = TAG_REGEX.match(html_content)
+    name = matches[1]
+    attributes = parse_attributes(matches[2])
+    content = matches[3]
+
+    tag = HtmlTag.new(name, attributes)
+    content.scan(TAG_REGEX) do |child_tag|
+      child_html = "<#{child_tag[0]}#{child_tag[1]}>#{child_tag[2]}</#{child_tag[0]}>"
+      tag.children << parse_html(child_html)
+    end
+
+    plain_text = content.gsub(TAG_REGEX, "").strip
+    tag.content = plain_text unless plain_text.empty?
+
+    tag
+  end
+
+  def parse_attributes(attributes_string)
+    attributes_string.scan(/([a-zA-Z0-9_-]+)="(.*?)"/).to_h
   end
   
 
