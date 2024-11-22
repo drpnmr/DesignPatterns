@@ -1,19 +1,17 @@
 require './html_tree.rb'
 
-root = HtmlTag.new("html")
-tree = HtmlTree.new(root)
+html_content = <<-HTML
+<div class="container">
+  <h1>здравствуйте</h1>
+  <p class="intro">
+    <span>спасите</span>
+    <span>меня</span>
+  </p>
+  <h2 class="footer">пожалуйста</h2>
+</div>
+HTML
 
-head = HtmlTag.new("head")
-body = HtmlTag.new("body")
-title = HtmlTag.new("title", {}, ":(")
-h1 = HtmlTag.new("h1", { class: "SuperMegaClass" }, "Hello")
-p = HtmlTag.new("p", {}, ":)")
-
-tree.add_tag(root, head)
-tree.add_tag(root, body)
-tree.add_tag(head, title)
-tree.add_tag(body, h1)
-tree.add_tag(body, p)
+tree = HtmlTree.new(html_content)
 
 puts tree.root.to_s
 
@@ -22,4 +20,7 @@ tree.dfs { |tag| puts tag.name }
 
 puts "\nОбход в ширину:"
 tree.bfs { |tag| puts tag.name }
+
+
+
   
