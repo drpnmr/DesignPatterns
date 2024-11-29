@@ -13,14 +13,11 @@ HTML
 
 tree = HtmlTree.new(html_content)
 
-puts tree.root.to_s
+puts tree.root
+puts tree.root.tag_depth
+puts tree.root.has_children?
 
-puts "\nОбход в глубину:"
-tree.dfs { |tag| puts tag.name }
+first_tag=tree.root.children.first
+puts first_tag.to_s
 
-puts "\nОбход в ширину:"
-tree.bfs { |tag| puts tag.name }
-
-
-
-  
+puts tree.select { |tag| tag.name == "span" }
