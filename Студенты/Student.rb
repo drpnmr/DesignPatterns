@@ -1,13 +1,22 @@
 require './Person.rb'
 class Student < Person
-  attr_reader :name, :surname, :patronymic
+  attr_reader :name, :surname, :patronymic, :birth_date
 
-  def initialize(id:nil,surname:,name:,patronymic:,phone:nil,telegram:nil,email:nil,git:nil)
+  def initialize(id: nil, surname:, name:, patronymic:, birth_date:, phone: nil, telegram: nil, email: nil, git: nil)
     super(id: id, git: git, phone: phone, telegram: telegram, email: email)
     self.surname = surname
-    self.name = name 
+    self.name = name
     self.patronymic = patronymic
+    self.birth_date = birth_date
+  end
 
+  def birth_date=(birth_date)
+    raise ArgumentError, "Некорректная дата рождения у студента с id: #{self.id}" unless self.class.is_correct_birth_date?(birth_date)
+    @birth_date = Date.parse(birth_date)
+  end
+
+  def self.is_correct_birth_date?(birth_date)
+    Date.parse(birth_date) rescue false
   end
 
   def self.is_correct_name?(name)
@@ -37,6 +46,7 @@ class Student < Person
     Телефон: #{@phone ? @phone : "не указано"}
     Телеграм: #{@telegram ? @telegram : "не указано"}
     Почта: #{@email ? @email : "не указано"}
-    Гит: #{@git ? @git : "не указано"}\n"
+    Гит: #{@git ? @git : "не указано"}
+    Дата рождения: #{@birth_date}\n\n"
    end
 end
