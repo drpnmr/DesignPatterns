@@ -10,7 +10,7 @@ class HtmlTree
     @root = parse_html(html_content)
   end
 
-  def parse_html(html_content, parent = nil)
+  def parse_html(html_content)
     return nil if html_content.strip.empty?
 
     matches = TAG_REGEX.match(html_content)
@@ -33,34 +33,26 @@ class HtmlTree
   def parse_attributes(attributes_string)
     attributes_string.scan(/([a-zA-Z0-9_-]+)="(.*?)"/).to_h
   end
-  
 
-  def add_tag(parent_tag, child_tag)
-    parent_tag.children << child_tag
-  end
-  
   def each
-    dfs.each do |element| 
-      yield element
-    end
+    bfs { |tag| yield(tag) } 
   end
-
+  
   def dfs
     stack = [root]
     until stack.empty?
       current = stack.pop
-      yield(current)
+      yield(current)   
       current.children.reverse.each { |child| stack.push(child) }
     end
   end
-
+  
   def bfs
     queue = [root]
     until queue.empty?
       current = queue.shift
-      yield(current)
+      yield(current) 
       current.children.each { |child| queue.push(child) }
     end
   end
-  
 end
