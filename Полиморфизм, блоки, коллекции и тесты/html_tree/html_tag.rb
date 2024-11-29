@@ -13,7 +13,7 @@ class HtmlTag
       start_tag = attributes_string.empty? ? "<#{name}>" : "<#{name} #{attributes_string}>"
       end_tag = "</#{name}>"
     
-      "#{start_tag}#{content}#{children.map(&:to_s).join}#{end_tag}\n"
+      "#{start_tag}#{content}#{end_tag}\n"
     end
     
     def tag_depth
