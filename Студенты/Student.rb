@@ -1,5 +1,8 @@
 require './Person.rb'
 class Student < Person
+
+  include Comparable
+  
   attr_reader :name, :surname, :patronymic, :birth_date
 
   def initialize(id: nil, surname:, name:, patronymic:, birth_date:, phone: nil, telegram: nil, email: nil, git: nil)
@@ -10,6 +13,11 @@ class Student < Person
     self.birth_date = birth_date
   end
 
+  def <=>(other)
+    return unless other.is_a?(Student)
+    birth_date <=> other.birth_date
+  end
+  
   def birth_date=(birth_date)
     raise ArgumentError, "Некорректная дата рождения у студента с id: #{self.id}" unless self.class.is_correct_birth_date?(birth_date)
     @birth_date = Date.parse(birth_date)
