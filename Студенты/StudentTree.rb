@@ -1,4 +1,5 @@
 require './Student.rb'
+
 class StudentTree
     include Enumerable
   
@@ -9,29 +10,36 @@ class StudentTree
     end
   
     class Node
-      attr_accessor :student, :left, :right
+      attr_accessor :value, :left, :right
   
-      def initialize(student)
-        @student = student
+      def initialize(value)
+        @value = value
         @left = nil
         @right = nil
       end
     end
   
-    def add(student)
-      @root = add_to_node(@root, student)
-    end
-  
-    def add_to_node(node, student)
-      return Node.new(student) if node.nil?
-  
-      if student.birth_date < node.student.birth_date
-        node.left = add_to_node(node.left, student)
+    def add(value)
+      node = Node.new(value)
+      if @root.nil?
+        @root = node
       else
-        node.right = add_to_node(node.right, student)
+        add_to_node(@root, node)
+      end
+    end
+
+
+    def add_to_node(root, node)
+      if root.nil?
+        return node
+      end      
+      if node.value < root.value
+        root.left = add_to_node(root.left, node)
+      else
+        root.right = add_to_node(root.right, node)
       end
   
-      node
+      root
     end
   
     def each(&block)
@@ -42,8 +50,7 @@ class StudentTree
       return if node.nil?
   
       traverse(node.left, &block)
-      yield(node.student)
+      block.call(node.value)
       traverse(node.right, &block)
     end
-  end
-  
+end
