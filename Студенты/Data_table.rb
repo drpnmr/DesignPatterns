@@ -4,8 +4,22 @@ class Data_table
     self.data = data
   end
 
+  def get_element(row, col)
+    data[row][col]
+  end
+
+  def row_count
+    data.empty? ? 0 : data.size
+  end
+
+  def column_count
+    data.empty? ? 0 : data.first.size
+  end
+
   private 
 
+  attr_reader :data
+  
   def data=(data)
     if data.is_a?(Array) && data.all? { |row| row.is_a?(Array) }
         @data = data
@@ -13,5 +27,6 @@ class Data_table
         raise TypeError, "Поле должно являться двумерным массивом"
     end
   end
-  
+
 end
+
