@@ -1,16 +1,14 @@
-require './Student.rb'
-require './Short_student.rb'
+require './Сущности/Student'
+require './Сущности/Short_student'
+require './Сущности/Person'
 require './Data_list_student_short.rb'
+require './Students_list_JSON.rb'
+require './Students_list_YAML.rb'
 require 'date'
 
-student1 = Student_short.from_string(id: 3, string: "Пономарь Д.С., darya.pnmr@gmail.com, drpnmr")
-student2 = Student_short.from_string(id: 4, string: "Иванов И.И., ivan123@gmail.com, ivan_git")
+students_list = Students_list_YAML.new('data/students.yml')
 
-students = [student1, student2]
+student_by_id = students_list.get_student_by_id(1)
+puts student_by_id.to_s
 
-data_list = Data_list_student_short.new(students)
-
-data_table = data_list.get_information
-
-puts data_table.to_s
 
