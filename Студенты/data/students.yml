@@ -1,0 +1,17 @@
+---
+  - id: 1
+    surname: "Пономарь"
+    name: "Дарья"
+    patronymic: "Сергеевна"
+    birth_date: "2004-09-16"
+    phone: null
+    email: "darya.pnmr@gmail.com"
+    git: "drpnmr"
+  - id: 2
+    surname: "Иванов"
+    name: "Иван"
+    patronymic: "Иванович"
+    birth_date: "2004-01-01"
+    phone: null
+    email: "ivanov@mail.com"
+    git: "ivhhf3000"
