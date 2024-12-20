@@ -19,7 +19,7 @@ class Data_table
   def to_s
     res = []
     self.data.each do |row|
-      row_str = row.join(' ')
+      row_str = row.join(', ')
       res << "#{row_str}"
     end
     res.join("\n")
