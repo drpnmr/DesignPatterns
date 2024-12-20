@@ -52,5 +52,3 @@ class ArrayProcessor
         false
     end
 end
-
-  
