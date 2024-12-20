@@ -16,6 +16,16 @@ class Data_table
     data.empty? ? 0 : data.first.size
   end
 
+  def to_s
+    res = []
+    self.data.each do |row|
+      row_str = row.join(' ')
+      res << "#{row_str}"
+    end
+    res.join("\n")
+  end
+
+
   private 
 
   attr_reader :data
@@ -29,4 +39,5 @@ class Data_table
   end
 
 end
+
 
