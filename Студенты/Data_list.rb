@@ -1,7 +1,7 @@
 class Data_list
 
   def initialize(list)
-    self.list = list.sort()
+    self.list = list
     self.selected = []
   end
   
@@ -17,12 +17,31 @@ class Data_list
     selected.map { |index| list[index] }
   end
 
-  def get_names
+  def get_information #скелет алгоритма
+    res = []
+    res << self.get_names
+    res.concat(self.get_data)
 
+    Data_table.new(res)
+
+  end
+
+  def get_names #абстрактный метод 
+    raise NotImplementedError, "Метод не определен"
   end
 
   def get_data
 
+    data_table = []
+    list.each_with_index.map do |element, index|
+      data_table << [index + 1] + get_attribute_val(element) 
+    end
+
+      Data_table.new(data_table)
+  end
+
+  protected def get_attribute_val
+    raise NotImplementedError, "Метод не определен" #абстрактный метод 
   end
 
   private
@@ -37,6 +56,6 @@ class Data_list
         raise TypeError, "Поле должно являться массивом"
     end
   end
-  
+
 end
 
