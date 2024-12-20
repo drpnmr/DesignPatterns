@@ -18,11 +18,8 @@ class Data_list
   end
 
   def get_information #скелет алгоритма
-    res = []
-    res << self.get_names
-    res.concat(self.get_data)
-
-    Data_table.new(res)
+    self.get_names.join(", ")
+    self.get_data
 
   end
 
