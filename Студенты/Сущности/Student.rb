@@ -1,4 +1,5 @@
-require './Person.rb'
+require_relative './Person.rb'
+
 class Student < Person
 
   include Comparable
@@ -57,4 +58,18 @@ class Student < Person
     Гит: #{@git ? @git : "не указано"}
     Дата рождения: #{@birth_date}\n\n"
    end
+   
+   def to_h
+    {
+      'id' => self.id,
+      'surname' => self.surname,
+      'name' => self.name,
+      'patronymic' => self.patronymic,
+      'birth_date' => self.birth_date,
+      'phone' => self.phone,
+      'telegram' => self.telegram,
+      'email' => self.email,
+      'git' => self.git
+    }
+  end
 end
