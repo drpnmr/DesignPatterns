@@ -2,17 +2,20 @@ require 'json'
 require './Сущности/Student.rb'
 require './Сущности/Short_student.rb'
 require './Data_list_student_short.rb'
+require './Students_list_strategy.rb'
 
 class Students_list
-    def initialize(file_path)
+
+    def initialize(file_path, strategy)
       self.file_path = file_path
+      self.strategy = strategy
       self.students = load_from_file
     end
   
     def load_from_file
       return [] unless File.exist?(file_path)
       raw_data = File.read(file_path) 
-      parse_data(raw_data)       
+      self.strategy.parse_data(raw_data)   
     end
   
     def save_to_files
@@ -67,30 +70,7 @@ class Students_list
       students.size
     end
     
-    private 
-    
-    def parse_data(raw_data)
-      raise NotImplementedError, "Метод не реализован"
-    end
-  
-    def format_data(data)
-      raise NotImplementedError, "Метод не реализован"
-    end
-  
-    def create_student_from_hash(student_hash)
-      Student.new(
-        id: student_hash['id'],
-        surname: student_hash['surname'],
-        name: student_hash['name'],
-        patronymic: student_hash['patronymic'],
-        birth_date: student_hash['birth_date'],
-        phone: student_hash['phone'],
-        telegram: student_hash['telegram'],
-        email: student_hash['email'],
-        git: student_hash['git']
-      )
-    end
-  
-    attr_accessor :file_path, :students
+    private
+    attr_accessor :file_path, :students, :strategy
   end
   
