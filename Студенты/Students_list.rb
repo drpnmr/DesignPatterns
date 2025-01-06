@@ -19,7 +19,7 @@ class Students_list
     end
   
     def save_to_files
-      raw_data = format_data(students) 
+      raw_data = strategy.format_data(students) 
       File.open(file_path, 'w') do |file|
         file.write(raw_data)
       end
