@@ -7,10 +7,16 @@ class Connection
     password: '12345',
     host: 'localhost',
     port: 5432
-  }
+  }.freeze
 
   def initialize
     @conn = PG.connect(DB_PARAMS)
+  end
+
+  private_class_method :new
+
+  def self.instance
+    @instance ||= new
   end
 
   def exec(query)
@@ -20,4 +26,5 @@ class Connection
   def close
     @conn.close
   end
+
 end

@@ -5,7 +5,7 @@ require './Data_list_student_short.rb'
 
 class Students_list_DB
   def initialize
-    @db = Connection.new
+    @db = Connection.instance
   end
 
   def get_student_by_id(id)
@@ -50,7 +50,4 @@ class Students_list_DB
     result[0]['count'].to_i
   end
 
-  def close
-    @db.close
-  end
 end
