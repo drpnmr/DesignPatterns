@@ -14,6 +14,20 @@ class Student < Person
     self.birth_date = birth_date
   end
 
+  def self.from_hash(hash)
+    new(
+      id: hash['id'],
+      surname: hash['surname'],
+      name: hash['name'],
+      patronymic: hash['patronymic'],
+      birth_date: hash['birth_date'],
+      phone: hash['phone'],
+      telegram: hash['telegram'],
+      email: hash['email'],
+      git: hash['git']
+    )
+  end
+
   def <=>(other)
     return unless other.is_a?(Student)
     birth_date <=> other.birth_date
@@ -72,4 +86,6 @@ class Student < Person
       'git' => self.git
     }
   end
+
+  
 end
