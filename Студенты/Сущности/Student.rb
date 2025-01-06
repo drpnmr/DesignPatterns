@@ -32,6 +32,20 @@ class Student < Person
     return unless other.is_a?(Student)
     birth_date <=> other.birth_date
   end
+
+  def ==(other)
+    return false unless other.is_a?(Student)
+    
+    self.surname == other.surname &&
+      self.name == other.name &&
+      self.patronymic == other.patronymic &&
+      self.birth_date == other.birth_date &&
+      self.email == other.email &&
+      self.telegram == other.telegram &&
+      self.phone == other.phone &&
+      self.git == other.git
+  end
+  
   
   def birth_date=(birth_date)
     raise ArgumentError, "Некорректная дата рождения у студента с id: #{self.id}" unless self.class.is_correct_birth_date?(birth_date)

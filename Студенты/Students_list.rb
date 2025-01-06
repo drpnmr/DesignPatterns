@@ -70,7 +70,12 @@ class Students_list
       students.size
     end
     
+    def unique?(student)
+      students.none? { |existing_student| existing_student == student }
+    end
+
     private
     attr_accessor :file_path, :students, :strategy
+    
   end
   
