@@ -17,9 +17,12 @@ class Data_list
     selected.map { |index| list[index] }
   end
 
-  def get_information #скелет алгоритма
-    self.get_names.join(", ")
-    self.get_data
+  def get_information 
+    data_table = []
+    list.each_with_index.map do |element, index|
+      data_table << [index + 1] + get_attribute_val(element) 
+    end
+    Data_table.new(data_table)
 
   end
 
@@ -27,14 +30,9 @@ class Data_list
     raise NotImplementedError, "Метод не определен"
   end
 
-  def get_data
-
-    data_table = []
-    list.each_with_index.map do |element, index|
-      data_table << [index + 1] + get_attribute_val(element) 
-    end
-
-      Data_table.new(data_table)
+  def get_data #скелет алгоритма
+    self.get_names.join(", ")
+    self.get_information
   end
 
   protected def get_attribute_val
