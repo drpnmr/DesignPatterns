@@ -42,6 +42,7 @@ class Students_list
     end
   
     def add_student(student)
+      raise "Студент с контактом или гитом уже существует" unless unique?(student)
       new_id = students.empty? ? 1 : students.map { |s| s.id }.max + 1
       student.id = new_id
       students << student
@@ -69,9 +70,9 @@ class Students_list
     def get_student_short_count
       students.size
     end
-    
+
     def unique?(student)
-      students.none? { |existing_student| existing_student == student }
+      students.none? { |student_arr| student_arr==student }
     end
 
     private
