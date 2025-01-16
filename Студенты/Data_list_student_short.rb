@@ -1,12 +1,13 @@
-require './Data_list.rb'
-require './Data_table.rb'
-require './Short_student.rb'
-require './Student.rb'
+
+require_relative './Data_table.rb'
+require_relative './Data_list.rb'
+require_relative './Сущности/Short_student.rb'
+require_relative './Сущности/Student.rb'
 
 class Data_list_student_short < Data_list
 
-  def get_names
-    ["№", "full_name", "git", "contact"]
+  def get_column_names
+    ["full_name", "git", "contact"]
   end
 
   private
