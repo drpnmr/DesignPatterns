@@ -163,7 +163,7 @@ class Student_list_view < FXMainWindow
     new_page = self.current_page + offset
     return if new_page < 1 || new_page > self.total_pages
     self.current_page = new_page
-    self.controller.refresh_data
+    self.controller.renew
   end  
 
   def read_table_from_view
