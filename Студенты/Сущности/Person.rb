@@ -37,7 +37,7 @@ class Person
  
   def contact
     if @contact.nil?
-      contacts = {'телеграм:': @telegram, 'телефон: ': @phone, 'почта: ': @email}
+      contacts = {'телеграм: ': @telegram, 'телефон: ': @phone, 'почта: ': @email}
       contact = ""
       contacts.each do |key, value|
         if !value.nil?

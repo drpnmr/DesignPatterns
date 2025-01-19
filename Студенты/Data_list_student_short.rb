@@ -7,13 +7,13 @@ require_relative './Сущности/Student.rb'
 class Data_list_student_short < Data_list
 
   def get_column_names
-    ["full_name", "git", "contact"]
+    ["Полное имя", "Гит", "Контакт"]
   end
 
   private
 
   def get_attribute_val(student_short)
-    [ student_short.instance_variable_get(:@full_name), student_short.git, student_short.contact]
+    [ student_short.full_name, student_short.git, student_short.contact]
   end
 
 end

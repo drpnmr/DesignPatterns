@@ -1,8 +1,8 @@
 require 'json'
-require './Сущности/Student.rb'
-require './Сущности/Short_student.rb'
-require './Data_list_student_short.rb'
-require './Students_list_strategy.rb'
+require_relative './Сущности/Student.rb'
+require_relative './Сущности/Short_student.rb'
+require_relative './Data_list_student_short.rb'
+require_relative './Students_list_strategy.rb'
 
 class Students_list
 
@@ -33,7 +33,8 @@ class Students_list
       start_index = (k - 1) * n
       end_index = start_index + n - 1
       short_students = students[start_index..end_index]
-      data_list ||= Data_list_student_short.new(short_students)
+      data_list.offset = (k - 1) * n
+      data_list.set_list(short_students)
       data_list
     end
   

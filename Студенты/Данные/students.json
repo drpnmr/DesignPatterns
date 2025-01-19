@@ -1,1 +1,29 @@
-[{"id":1,"surname":"Пономарь","name":"Дарья","patronymic":"Сергеевна","birth_date":"2004-09-16","telegram":"drpnmr","email":"darya.pnmr@gmail.com","phone":null,"git":"drpnmr"},{"id":2,"surname":"Иванов","name":"Иван","patronymic":"Иванович","birth_date":"2004-01-01","telegram":"ivnvn","email":null,"phone":null,"git":"ivhhf3000"}]
+[
+    {"id": 1, "surname": "Пономарь", "name": "Дарья", "patronymic": "Сергеевна", "birth_date": "2004-09-16", "email": "darya.pnmr@gmail.com", "phone": null, "git": "drpnmr"},
+    {"id": 2, "surname": "Иванов", "name": "Иван", "patronymic": "Иванович", "birth_date": "2004-01-01", "telegram": "ivnvn", "email": null, "phone": null, "git": "ivhhf3000"},
+    {"id": 3, "surname": "Смирнов", "name": "Алексей", "patronymic": "Владимирович", "birth_date": "2003-03-12", "telegram": "aleks_sm", "email": "alex.smirnov@example.com", "phone": "+79991234567", "git": "alexsm"},
+    {"id": 4, "surname": "Кузнецов", "name": "Дмитрий", "patronymic": "Михайлович", "birth_date": "2002-11-20", "telegram": "dmitriy_kuz", "email": "dmitriy.kuz@example.com", "phone": "+79997654321", "git": "dmitriy_kuz"},
+    {"id": 5, "surname": "Попов", "name": "Петр", "patronymic": "Николаевич", "birth_date": "2000-05-06", "telegram": "petya_pop", "email": "petya.popov@example.com", "phone": null, "git": "petropop"},
+    {"id": 6, "surname": "Михайлов", "name": "Анатолий", "patronymic": "Евгеньевич", "birth_date": "2003-02-25", "telegram": "anatomich", "email": "anat.mikh@example.com", "phone": "+79991234567", "git": "anatolii_mikh"},
+    {"id": 7, "surname": "Фёдоров", "name": "Игорь", "patronymic": "Сергеевич", "birth_date": "2001-07-14", "email": "igor.fedorov@example.com", "phone": "+79994445566", "git": "igor_fed"},
+    {"id": 8, "surname": "Сидоров", "name": "Сергей", "patronymic": "Александрович", "birth_date": "2004-08-09", "telegram": "serg_sidr", "email": "sergey.sidorov@example.com", "phone": "+79996667788", "git": "serg_sid"},
+    {"id": 9, "surname": "Григорьев", "name": "Максим", "patronymic": "Дмитриевич", "birth_date": "2002-12-17", "telegram": "max_grig", "email": "max.grigoryev@example.com", "phone": "+79995553322", "git": "max_grig"},
+    {"id": 10, "surname": "Лебедев", "name": "Константин", "patronymic": "Александрович", "birth_date": "2001-10-30", "telegram": "kostya_leb", "email": "kostya.lebedev@example.com", "phone": "+79994444321", "git": "kostya_leb"},
+    {"id": 11, "surname": "Захаров", "name": "Даниил", "patronymic": "Сергеевич", "birth_date": "2003-04-19", "telegram": "daniil_zakh", "email": "daniil.zakharov@example.com", "phone": "+79993333221", "git": "danil_zakh"},
+    {"id": 12, "surname": "Петров", "name": "Егор", "patronymic": "Иванович", "birth_date": "2004-07-25", "telegram": "egor_pet", "email": "egor.petrov@example.com", "phone": null, "git": "egor_pet"},
+    {"id": 13, "surname": "Новиков", "name": "Артур", "patronymic": "Михайлович", "birth_date": "2002-06-21", "telegram": "art_nov", "email": "artur.novikov@example.com", "phone": "+79992223344", "git": "art_nov"},
+    {"id": 14, "surname": "Васильев", "name": "Артем", "patronymic": "Сергеевич", "birth_date": "2001-05-13", "telegram": "artem_vas", "email": "artem.vasiliev@example.com", "phone": "+79991122334", "git": "artem_vas"},
+    {"id": 15, "surname": "Яковлев", "name": "Максим", "patronymic": "Анатольевич", "birth_date": "2003-09-02", "email": "maxim.yakovlev@example.com", "phone": "+79994455788", "git": "max_yakov"},
+    {"id": 16, "surname": "Кравцов", "name": "Никита", "patronymic": "Олегович", "birth_date": "2004-12-05", "telegram": "nikita_kr", "email": "nikita.kravtsov@example.com", "phone": "+79991155678", "git": "nikita_kr"},
+    {"id": 17, "surname": "Морозов", "name": "Роман", "patronymic": "Дмитриевич", "birth_date": "2002-04-15", "telegram": "roman_mor", "email": "roman.morozov@example.com", "phone": null, "git": "roman_mor"},
+    {"id": 18, "surname": "Шмидт", "name": "Станислав", "patronymic": "Анатольевич", "birth_date": "2001-09-30", "telegram": "stan_schmidt", "email": "stan.schmidt@example.com", "phone": "+79993334455", "git": "stan_schmidt"},
+    {"id": 19, "surname": "Гусев", "name": "Денис", "patronymic": "Андреевич", "birth_date": "2003-11-22", "telegram": "den_gus", "email": "denis.gusev@example.com", "phone": "+79992224466", "git": "den_gus"},
+    {"id": 20, "surname": "Ковалев", "name": "Евгений", "patronymic": "Сергеевич", "birth_date": "2000-02-03", "phone": "+79995556677", "git": "evgeny_kov"},
+    {"id": 21, "surname": "Соколова", "name": "Мария", "patronymic": "Александровна", "birth_date": "2004-05-12", "email": "maria.sokolova@example.com", "phone": "+79991234567", "git": "maria_sok"},
+    {"id": 22, "surname": "Лебедева", "name": "Елена", "patronymic": "Михайловна", "birth_date": "2003-08-22", "telegram": "elena_leb", "email": "elena.lebedeva@example.com", "phone": "+79997778899", "git": "elena_leb"},
+    {"id": 23, "surname": "Кузнецова", "name": "Ольга", "patronymic": "Дмитриевна", "birth_date": "2002-02-14", "telegram": "olga_kuz", "email": "olga.kuznecova@example.com", "phone": "+79995557788", "git": "olga_kuz"},
+    {"id": 24, "surname": "Васильева", "name": "Татьяна", "patronymic": "Юрьевна", "birth_date": "2004-04-18", "telegram": "tatiana_vas", "email": "tatiana.vasilieva@example.com", "phone": "+79993334477", "git": "tatiana_vas"},
+    {"id": 25, "surname": "Смирнова", "name": "Анна", "patronymic": "Ивановна", "birth_date": "2001-11-23", "telegram": "anna_sm", "email": "anna.smirnova@example.com", "phone": "+79992223355", "git": "anna_sm"},
+    {"id": 26, "surname": "Романова", "name": "Екатерина", "patronymic": "Александровна", "birth_date": "2003-10-11", "email": "katya.romanova@example.com", "phone": "+79994455667", "git": "katya_rom"}
+]
+  
