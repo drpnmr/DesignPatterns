@@ -10,7 +10,7 @@ include Fox
 
 class Student_list_view < FXMainWindow
 
-  private attr_accessor :filters, :table, :prev_button, :next_button, :total_pages, :page_index, :delete_button, :edit_button, :controller
+  private attr_accessor :filters, :table, :prev_button, :next_button, :total_pages, :page_index, :delete_button, :edit_button, :controller, :selected_rows
   attr_accessor :current_page, :items_per_page
 
   def initialize(app)
@@ -57,18 +57,14 @@ class Student_list_view < FXMainWindow
     column_names.each_with_index do |name, index|
         self.table.setItemText(0, index, name)
     end
-    puts("Logs_count: #{logs_count}")
-    puts("Items_per_page: #{self.items_per_page}")
     self.total_pages = (logs_count / (self.items_per_page - 1).to_f).ceil
-    puts("Total_pages: #{self.total_pages}")
     self.page_index.text = "Страница #{self.current_page} из #{self.total_pages}"
   end
 
   def set_table_data(data_table)
-    clear_table
-    self.table.setTableSize(data_table.row_count, data_table.column_count)  
+    self.table.setTableSize(data_table.row_count, data_table.column_count)
     (0...data_table.row_count).each do |row| 
-      (0...data_table.column_count).each do |col|
+      (0...data_table.column_count).each do |col| 
         self.table.setItemText(row, col, data_table.get_element(row, col).to_s)
       end
     end
@@ -147,9 +143,25 @@ class Student_list_view < FXMainWindow
 
   def setup_crud_segment(parent)
     add_button = FXButton.new(parent, "Добавить", opts: LAYOUT_FILL_X | BUTTON_NORMAL)
+    add_button.connect(SEL_COMMAND) do
+      self.controller.create
+    end
+
     self.delete_button = FXButton.new(parent, "Удалить", opts: LAYOUT_FILL_X | BUTTON_NORMAL)
+    delete_button.connect(SEL_COMMAND) do
+      delete_logs
+    end
+
     self.edit_button = FXButton.new(parent, "Изменить", opts: LAYOUT_FILL_X | BUTTON_NORMAL)
+    edit_button.connect(SEL_COMMAND) do
+      update_log
+    end
+
     refresh_button = FXButton.new(parent, "Обновить", opts: LAYOUT_FILL_X | BUTTON_NORMAL)
+    refresh_button.connect(SEL_COMMAND) do
+      self.controller.renew 
+    end
+
     self.table.connect(SEL_CHANGED) {update_buttons_state}
   end
 
@@ -166,22 +178,24 @@ class Student_list_view < FXMainWindow
     self.controller.refresh_data
   end  
 
-  def read_table_from_view
-    table = []
-    (1...self.table.numRows).each do |row|
-      row_data = []
-      (0...self.table.numColumns).each do |col|
-        row_data << self.table.getItemText(row, col)
-      end
-      break if row_data.all? {|attribute| attribute  == ""}
-      
-      table << row_data
-    end
-    return table
-  end
-
   def clear_table
     self.table.setTableSize(1, self.table.numColumns) 
+  end
+
+  def update_log
+    self.selected_rows = []
+    (0...self.table.numRows).each do |row_ix|
+        self.selected_rows << row_ix if self.table.rowSelected?(row_ix)
+    end
+    self.controller.update(self.selected_rows[0])
+  end
+
+  def delete_logs
+    self.selected_rows = []
+    (0...self.table.numRows).each do |row_ix|
+      self.selected_rows << row_ix if self.table.rowSelected?(row_ix)
+    end
+    self.controller.delete(self.selected_rows)
   end
   
 end
