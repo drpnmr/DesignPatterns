@@ -39,8 +39,8 @@ class Student_list_controller
     end
 
     def renew
+        self.student_list = Students_list.new('C:/Users/darya/ruby/Студенты/Данные/students.json', Students_list_JSON_strategy.new)
         self.student_list.load_from_file
         self.refresh_data
     end
-
 end
